@@ -461,7 +461,7 @@ func	GetDestinationsByContinent(continent string) []Destination {
 }
 
 // model1: function to get destinations by ID
-func	GetDestinationsByID(id string) (Destination, bool) {
+func	GetDestinationByID(id string) (Destination, bool) {
 	for _, dest := range Destinations {
 		if dest.ID == id {
 			return dest, true
