@@ -1,14 +1,17 @@
 {
-    "name": "travel",
+    "name": "travel-destinations-frontend",
     "version": "1.0.0",
-    "dependencies": {
-        "vue": "^3.5.13"
-    },
-    "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+      "dev": "vite",
+      "build": "vite build",
+      "preview": "vite preview"
     },
-    "author": "Oreste",
-    "license": "ISC",
-    "description": ""
+    "dependencies": {
+      "axios": "^1.6.0",
+      "vue": "^3.3.4"
+    },
+    "devDependencies": {
+      "@vitejs/plugin-vue": "^4.2.3",
+      "vite": "^4.4.5"
+    }
 }
