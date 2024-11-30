@@ -448,3 +448,14 @@ var Destinations = []Destination{
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
 	},
 }
+
+// model1: function to get destinations by continent
+func	GetDestinationsByContinent(continent string) []Destination {
+	var result	[]Destination
+	for _, dest := range Destinations {
+		if dest.Continent == continent {
+			result = append(result, dest)
+		}
+	}
+	return result
+}
