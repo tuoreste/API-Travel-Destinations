@@ -25,9 +25,9 @@ var Destinations = []Destination{
 		Country: "United States",
 		Description: "The city that never sleeps, known for its iconic skyline and cultural diversity.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 40.7128,
 			Longitude: -74.0060,
 		},
@@ -42,9 +42,9 @@ var Destinations = []Destination{
 		Country: "Canada",
 		Description: "A vibrant city with diverse cultures and a thriving arts scene.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 43.6511,
 			Longitude: -79.3835,
 		},
@@ -59,9 +59,9 @@ var Destinations = []Destination{
 		Country: "Mexico",
 		Description: "A bustling metropolis with a rich cultural heritage.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 19.4326,
 			Longitude: -99.1332,
 		},
@@ -76,9 +76,9 @@ var Destinations = []Destination{
 		Country: "United States",
 		Description: "Known for its bold architecture and deep-dish pizza.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 41.8781,
 			Longitude: -87.6298,
 		},
@@ -93,9 +93,9 @@ var Destinations = []Destination{
 		Country: "Cuba",
 		Description: "Famous for its vintage cars and rich Cuban culture.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 23.1136,
 			Longitude: -82.3666,
 		},
@@ -111,9 +111,9 @@ var Destinations = []Destination{
 		Country: "Brazil",
 		Description: "Famous for its Carnival, beaches, and the Christ the Redeemer statue.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: -22.9068,
 			Longitude: -43.1729,
 		},
@@ -128,9 +128,9 @@ var Destinations = []Destination{
 		Country: "Argentina",
 		Description: "A city blending European elegance and Latin passion.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: -34.6037,
 			Longitude: -58.3816,
 		},
@@ -145,9 +145,9 @@ var Destinations = []Destination{
 		Country: "Peru",
 		Description: "A city with stunning colonial architecture and rich history.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: -12.0464,
 			Longitude: -77.0428,
 		},
@@ -162,9 +162,9 @@ var Destinations = []Destination{
 		Country: "Chile",
 		Description: "The vibrant capital surrounded by the Andes Mountains.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: -33.4489,
 			Longitude: -70.6693,
 		},
@@ -179,9 +179,9 @@ var Destinations = []Destination{
 		Country: "Colombia",
 		Description: "The cultural heart of Colombia with vibrant street art.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 4.7110,
 			Longitude: -74.0721,
 		},
@@ -197,9 +197,9 @@ var Destinations = []Destination{
 		Country: "Germany",
 		Description: "A vibrant city with a rich history and modern culture.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 52.5200,
 			Longitude: 13.4050,
 		},
@@ -214,9 +214,9 @@ var Destinations = []Destination{
 		Country: "France",
 		Description: "The city of love and a global hub for art, fashion, and gastronomy.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 48.8566,
 			Longitude: 2.3522,
 		},
@@ -231,9 +231,9 @@ var Destinations = []Destination{
 		Country: "Italy",
 		Description: "A city steeped in history, home to the Colosseum and Vatican City.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 41.9028,
 			Longitude: 12.4964,
 		},
@@ -248,9 +248,9 @@ var Destinations = []Destination{
 		Country: "Netherlands",
 		Description: "Known for its canals, museums, and vibrant nightlife.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 52.3676,
 			Longitude: 4.9041,
 		},
@@ -265,9 +265,9 @@ var Destinations = []Destination{
 		Country: "Spain",
 		Description: "The lively Spanish capital known for its art and culture.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 40.4168,
 			Longitude: -3.7038,
 		},
@@ -283,9 +283,9 @@ var Destinations = []Destination{
 		Country: "Japan",
 		Description: "The bustling capital of Japan, blending ultramodern skyscrapers with traditional temples.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 35.6895,
 			Longitude: 139.6917,
 		},
@@ -300,9 +300,9 @@ var Destinations = []Destination{
 		Country: "Thailand",
 		Description: "Thailand's capital, famous for its vibrant street life and cultural landmarks.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 13.7563,
 			Longitude: 100.5018,
 		},
@@ -317,9 +317,9 @@ var Destinations = []Destination{
 		Country: "China",
 		Description: "The ancient capital of China, home to the Great Wall and the Forbidden City.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 39.9042,
 			Longitude: 116.4074,
 		},
@@ -334,9 +334,9 @@ var Destinations = []Destination{
 		Country: "United Arab Emirates",
 		Description: "A modern city in the UAE, known for its luxury shopping and ultramodern architecture.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 25.276987,
 			Longitude: 55.296249,
 		},
@@ -351,9 +351,9 @@ var Destinations = []Destination{
 		Country: "India",
 		Description: "India's largest city and financial hub, known for Bollywood and cultural diversity.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 19.076,
 			Longitude: 72.8777,
 		},
@@ -369,9 +369,9 @@ var Destinations = []Destination{
 		Country: "Egypt",
 		Description: "The sprawling capital of Egypt, known for its ancient pyramids and rich history.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 30.0444,
 			Longitude: 31.2357,
 		},
@@ -386,9 +386,9 @@ var Destinations = []Destination{
 		Country: "South Africa",
 		Description: "A port city on South Africa's southwest coast, beneath the iconic Table Mountain.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: -33.9249,
 			Longitude: 18.4241,
 		},
@@ -403,9 +403,9 @@ var Destinations = []Destination{
 		Country: "Kenya",
 		Description: "Kenya's capital city and a gateway to safari adventures.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: -1.2864,
 			Longitude: 36.8172,
 		},
@@ -420,9 +420,9 @@ var Destinations = []Destination{
 		Country: "Rwanda",
 		Description: "The clean and modern capital city of Rwanda, known for its resilience and growth.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: -1.9441,
 			Longitude: 30.0619,
 		},
@@ -437,9 +437,9 @@ var Destinations = []Destination{
 		Country: "Morocco",
 		Description: "A vibrant city in Morocco known for its historic medina and bustling souks.",
 		Location: struct {
-            Latitude  float64 `json:"latitude"`
-            Longitude float64 `json:"longitude"`
-        }{
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
 			Latitude: 31.6295,
 			Longitude: -7.9811,
 		},
