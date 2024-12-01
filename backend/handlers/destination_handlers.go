@@ -156,12 +156,17 @@ func	GeoTrackingWebSocket(w http.ResponseWriter, r *http.Request) {
 
 
 
-		// highlights := strings.Join(dest.Highlights, ", ")
 		// notification := "You are near " + dest.Name + ". Highlights: " + highlights
 		// notifications = append(notifications, notification)
-		if err := conn.WriteJSON(notifications); err != nil {
-			log.Println("WebSocket write error:", err)
-			break
+		if closestDest != nil {
+			highlights := strings.Join(closestDest.Highlights, "")
+			notification := map[string]string {
+				"message": "You are near " + closestDest.Name + ". Highlights: " + highlights, 
+			}
+			if err := conn.WriteJSON(notification); err != nil {
+				log.Println("WebSocket write error:", err)
+				break
+			}
 		}
 	}
 }
