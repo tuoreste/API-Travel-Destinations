@@ -3,8 +3,10 @@
 *.js linguist-language=JavaScript
 
 frontend/src/assets/* linguist-vendored
+frontend/public/* linguist-vendored
 frontend/src/components/* linguist-vendored
 frontend/.json linguist-vendored
-frontend/assets/.js linguist-vendored
-frontend/assets/* linguist-vendored
-frontend/assets/* linguist-vendored
+frontend/.js linguist-vendored
+frontend/vite.config.js linguist-vendored
+frontend/.vite/* linguist-vendored
+frontend/node_modules/* linguist-vendored
