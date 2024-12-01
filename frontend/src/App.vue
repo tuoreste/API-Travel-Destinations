@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <h1>Global Travel Destinations</h1>
-    
     <!-- Continent Selector -->
     <div class="continent-selector">
       <button 

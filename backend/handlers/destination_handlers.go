@@ -11,9 +11,19 @@ import (
 	"strings"
 
 	"github.com/gorilla/mux"
+	"github.com/gorilla/websocket"
+	"golang.org/x/net/websocket"
+
 	// "github.com/pelletier/go-toml/query"
 	"github.com/tuoreste/API-Travel-Destinations.git/models"
 )
+
+type	GeoLocationRequest struct {
+	Latitude float64 `json:"latitude"`
+	Longitude float64 `json:"longitude"`
+	Radius	 float64 `json:"radius"`
+}
+
 
 //handling requests to fetch destinations by continent
 func	GetDestinationsByContinent(w http.ResponseWriter, r *http.Request) {
@@ -106,4 +116,47 @@ func	GetNearbyDestinations(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	json.NewEncoder(w).Encode(nearbyDestinations)
+}
+
+var	upgrader = websocket.Upgrader{
+	CheckOrigin: func(r *http.Request) bool {
+		return true
+	},
+}
+
+// handling websocket here on rea-time notifi
+func	GeoTrackingWebSocket(w http.ResponseWriter, r *http.Request) {
+	conn, err := upgrader.Upgrade(w, r, nil)
+	if err != nil {
+		log.Println("Websocket upgrade error:", err)
+		return
+	}
+	defer conn.Close()
+
+	for {
+		var locationReq	GeoLocationRequest
+		err := conn.ReadJSON(&locationReq)
+		if err != nil {
+			log.Println("WebSocket read error:", err)
+			break
+		}
+
+		//call nearby locations
+		var notifications []string
+		for _, dest := range models.Destinations {
+			distance := CalculateDistance(locationReq.Latitude, locationReq.Longitude, dest.Location.Latitude, dest.Location.Longitude)
+			if distance <= locationReq.Radius {
+				notification := "You are near " + dest.Name + ". Highlights: " + dest.HighlightsString()
+				notifications = append(notifications, notification)
+			}
+		}
+		if err := conn.WriteJSON(notifications); err != nil {
+			log.Println("WebSocket write error:", err)
+			break
+		}
+	}
+}
+
+func (d Destination) HighlightsString() string {
+	return strings.Join(d.Highlights, ", ")
 }
