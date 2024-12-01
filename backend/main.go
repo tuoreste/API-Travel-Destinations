@@ -23,6 +23,7 @@ func	main() {
 	r.HandleFunc("/destinations/{continent}", handlers.GetDestinationsByContinent).Methods("GET")
 	r.HandleFunc("/destinations/{id}", handlers.GetDestinationByID).Methods("GET")
 	r.HandleFunc("/continents", handlers.GetAllContinents).Methods("GET")
+	r.HandleFunc("/nearby", handlers.GetNearbyDestinations).Methods("GET")
 
 	handler := c.Handler(r)
 

@@ -13,6 +13,7 @@ type Destination struct {
 	Ticket_Link		string `json:"ticket_link"`
 	Image_URL		string `json:"image_url"`
 	Highlights		[]string `json:"highlights"`
+	Notification	string `json:"notification"`
 }
 
 //raw data ai generated
@@ -34,6 +35,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/nyc-tickets",
 		Image_URL: "https://www.example.com/images/nyc.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "2",
@@ -44,13 +46,14 @@ var Destinations = []Destination{
 		Location: struct {
 			Latitude  float64 `json:"latitude"`
 			Longitude float64 `json:"longitude"`
-		}{
-			Latitude: 43.6511,
-			Longitude: -79.3835,
+			}{
+				Latitude: 43.6511,
+				Longitude: -79.3835,
 		},
 		Ticket_Link: "https://www.example.com/toronto-tickets",
 		Image_URL: "https://www.example.com/images/toronto.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "3",
@@ -68,6 +71,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/mexico-city-tickets",
 		Image_URL: "https://www.example.com/images/mexico-city.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "4",
@@ -85,6 +89,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/chicago-tickets",
 		Image_URL: "https://www.example.com/images/chicago.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "5",
@@ -102,6 +107,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/havana-tickets",
 		Image_URL: "https://www.example.com/images/havana.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	//south america
 	{
@@ -120,6 +126,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/rio-tickets",
 		Image_URL: "https://www.example.com/images/rio.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "7",
@@ -137,6 +144,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/buenos-aires-tickets",
 		Image_URL: "https://www.example.com/images/buenos-aires.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "8",
@@ -154,6 +162,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/lima-tickets",
 		Image_URL: "https://www.example.com/images/lima.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "9",
@@ -171,6 +180,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/santiago-tickets",
 		Image_URL: "https://www.example.com/images/santiago.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "10",
@@ -188,6 +198,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/bogota-tickets",
 		Image_URL: "https://www.example.com/images/bogota.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	//europe
 	{
@@ -206,6 +217,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/berlin-tickets",
 		Image_URL: "https://www.example.com/images/berlin.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "12",
@@ -223,6 +235,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/paris-tickets",
 		Image_URL: "https://www.example.com/images/paris.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "13",
@@ -240,6 +253,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/rome-tickets",
 		Image_URL: "https://www.example.com/images/rome.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "14",
@@ -257,6 +271,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/amsterdam-tickets",
 		Image_URL: "https://www.example.com/images/amsterdam.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "15",
@@ -272,8 +287,9 @@ var Destinations = []Destination{
 			Longitude: -3.7038,
 		},
 		Ticket_Link: "https://www.example.com/madrid-tickets",
-		Image_URL: "https://www.example.com/images/madrid.jpg",
+		Image_URL: "https://d2bgjx2gb489de.cloudfront.net/gbb-blogs/wp-content/uploads/2018/08/29184041/Madrid-Spain-Royal-Palace-and-Cathedral-76506930.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	//asia
 	{
@@ -292,6 +308,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/tokyo-tickets",
 		Image_URL: "https://www.example.com/images/tokyo.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "2",
@@ -309,6 +326,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/bangkok-tickets",
 		Image_URL: "https://www.example.com/images/bangkok.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "3",
@@ -326,6 +344,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/beijing-tickets",
 		Image_URL: "https://www.example.com/images/beijing.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "4",
@@ -343,6 +362,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/dubai-tickets",
 		Image_URL: "https://www.example.com/images/dubai.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "5",
@@ -360,6 +380,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/mumbai-tickets",
 		Image_URL: "https://www.example.com/images/mumbai.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	//africa
 	{
@@ -378,6 +399,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/cairo-tickets",
 		Image_URL: "https://www.example.com/images/cairo.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "2",
@@ -395,6 +417,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/cape-town-tickets",
 		Image_URL: "https://www.example.com/images/cape-town.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "3",
@@ -412,6 +435,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/nairobi-tickets",
 		Image_URL: "https://www.example.com/images/nairobi.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "4",
@@ -429,6 +453,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/kigali-tickets",
 		Image_URL: "https://www.example.com/images/kigali.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
 		ID: "5",
@@ -446,6 +471,7 @@ var Destinations = []Destination{
 		Ticket_Link: "https://www.example.com/marrakech-tickets",
 		Image_URL: "https://www.example.com/images/marrakech.jpg",
 		Highlights:  []string{"Chichen Itza", "Beach Resorts", "Underwater Museums"},
+		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 }
 
