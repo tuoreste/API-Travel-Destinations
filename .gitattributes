@@ -1,0 +1,19 @@
+*.go linguist-language=Go
+*.vue linguist-language=Vue
+*.js linguist-language=JavaScript
+
+frontend/node_modules/* linguist-vendored
+frontend/public/* linguist-vendored
+frontend/src/assets/* linguist-vendored
+frontend/src/components/* linguist-vendored
+frontend/src/* linguist-vendored
+
+frontend/vite.config.js linguist-ignored
+frontend/package-lock.json linguist-ignored
+frontend/package.json linguist-ignored
+
+frontend/*.json linguist-ignored
+
+frontend/*.js linguist-ignored
+
+README.md linguist-documentation
