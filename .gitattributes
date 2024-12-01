@@ -1,19 +1,18 @@
+# Explicitly set languages for Go and Vue
 *.go linguist-language=Go
 *.vue linguist-language=Vue
-# *.js linguist-language=JavaScript
 
-frontend/node_modules/* linguist-vendored
-frontend/public/* linguist-vendored
-frontend/src/assets/* linguist-vendored
-frontend/src/components/* linguist-vendored
-frontend/src/* linguist-vendored
+# Ignore JavaScript files in the frontend directory
+frontend/**/*.js linguist-ignored=true
+frontend/**/*.json linguist-ignored=true
 
-frontend/vite.config.js linguist-ignored
-frontend/package-lock.json linguist-ignored
-frontend/package.json linguist-ignored
+# Mark certain folders as vendor code
+frontend/node_modules/* linguist-vendored=true
+frontend/public/* linguist-vendored=true
+frontend/src/assets/* linguist-vendored=true
+frontend/src/components/* linguist-vendored=true
 
-frontend/*.json linguist-ignored
-
-frontend/*.js linguist-ignored
-
-README.md linguist-documentation
+# Ignore configuration files
+frontend/package.json linguist-ignored=true
+frontend/package-lock.json linguist-ignored=true
+frontend/vite.config.js linguist-ignored=true
