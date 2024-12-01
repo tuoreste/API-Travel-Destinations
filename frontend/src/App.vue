@@ -115,13 +115,18 @@ export default {
       this.socket = new WebSocket("ws://localhost:8090/ws/geo-tracking");
 
       this.socket.onopen = () => {
-        console.log("WebSocket connected!");
-        this.sendLocation(40.748817, -73.985428, 5);
+        console.log("WebSocket connection established.");
+        this.getUserLocation();
+        // this.sendLocation(40.748817, -73.985428, 5);
       };
 
       this.socket.onmessage = (event) => {
-        console.log("Message from server:", event.data);
-        this.notifications.push(event.data); 
+        const notification = JSON.parse(event.data);
+        if (notification.message) {
+          this.displayNotification(notification.message);
+        }
+        // console.log("Message from server:", event.data);
+        // this.notifications.push(event.data); 
       };
 
       this.socket.onerror = (error) => {
@@ -129,19 +134,42 @@ export default {
       };
 
       this.socket.onclose = () => {
-        console.log("WebSocket closed!");
+        console.log("WebSocket connection closed!");
       };
     },
-    sendLocation(latitude, longitude, radius) {
-      const locationRequest = {
-        latitude,
-        longitude,
-        radius,
-      };
-      if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-        this.socket.send(JSON.stringify(locationRequest));
-        console.log("Location sent:", locationRequest);
+
+    getUserLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            const radius = 1000;
+            this.sendLocationData(latitude, longitude, radius);
+          },
+          (error) => {
+            console.error("Error fetching location:", error);
+          }
+        );
+      } else {
+        console.error("Geolocation is not supported by this browser.");
       }
+    },
+    sendLocationData(latitude, longitude, radius) {
+      if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+        const locationRequest = {
+          latitude,
+          longitude,
+          radius,
+        };
+        this.socket.send(JSON.stringify(locationRequest));
+      } else {
+        console.error("WebSocket is not open.");
+      }
+    },
+
+    displayNotification(message) {
+      alert(message);
     },
   },
   created() {

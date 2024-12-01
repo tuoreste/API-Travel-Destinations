@@ -220,6 +220,24 @@ var Destinations = []Destination{
 		Notification: "You are near Empire State Building. Check out the highlights: Iconic Views, Historic Architecture",
 	},
 	{
+		ID: "stuttgart-001",
+		Name: "Stuttgart",
+		Continent: "Europe",
+		Country: "Germany",
+		Description: "Stuttgart, the capital of the state of Baden-Württemberg, is known for its rich cultural heritage, modern architecture, and as the home of famous automotive brands like Porsche and Mercedes-Benz.",
+		Location: struct {
+			Latitude  float64 `json:"latitude"`
+			Longitude float64 `json:"longitude"`
+		}{
+		  Latitude: 48.7758,
+		  Longitude: 9.1829,
+		},
+		Ticket_Link: "https://www.stuttgart-tourist.de/en/tickets",
+		Image_URL: "https://example.com/stuttgart-image.jpg",
+		Highlights: []string{"Mercedes-Benz Museum","Porsche Museum","Stuttgart State Gallery","Wilhelma Zoological and Botanical Garden","Schlossplatz","Königstrasse (shopping street)"},
+		Notification: "You are near Stuttgart. Explore the Mercedes-Benz Museum and other cultural landmarks!",
+	},
+	{
 		ID: "12",
 		Name: "Paris",
 		Continent: "Europe",
