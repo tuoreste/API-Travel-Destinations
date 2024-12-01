@@ -12,7 +12,7 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
-	"golang.org/x/net/websocket"
+	// "golang.org/x/net/websocket"
 
 	// "github.com/pelletier/go-toml/query"
 	"github.com/tuoreste/API-Travel-Destinations.git/models"
@@ -146,7 +146,8 @@ func	GeoTrackingWebSocket(w http.ResponseWriter, r *http.Request) {
 		for _, dest := range models.Destinations {
 			distance := CalculateDistance(locationReq.Latitude, locationReq.Longitude, dest.Location.Latitude, dest.Location.Longitude)
 			if distance <= locationReq.Radius {
-				notification := "You are near " + dest.Name + ". Highlights: " + dest.HighlightsString()
+				highlights := strings.Join(dest.Highlights, ", ")
+				notification := "You are near " + dest.Name + ". Highlights: " + highlights
 				notifications = append(notifications, notification)
 			}
 		}
@@ -155,8 +156,4 @@ func	GeoTrackingWebSocket(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 	}
-}
-
-func (d Destination) HighlightsString() string {
-	return strings.Join(d.Highlights, ", ")
 }
