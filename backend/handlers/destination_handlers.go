@@ -142,15 +142,23 @@ func	GeoTrackingWebSocket(w http.ResponseWriter, r *http.Request) {
 		}
 
 		//call nearby locations
-		var notifications []string
+		var closestDest	*models.Destination
+		var minDistance float64 = -1
+
+		// var notifications []string
 		for _, dest := range models.Destinations {
 			distance := CalculateDistance(locationReq.Latitude, locationReq.Longitude, dest.Location.Latitude, dest.Location.Longitude)
-			if distance <= locationReq.Radius {
-				highlights := strings.Join(dest.Highlights, ", ")
-				notification := "You are near " + dest.Name + ". Highlights: " + highlights
-				notifications = append(notifications, notification)
+			if distance <= locationReq.Radius && (minDistance == -1 || distance < minDistance) {
+				minDistance = distance
+				closestDest = &dest
 			}
 		}
+
+
+
+		// highlights := strings.Join(dest.Highlights, ", ")
+		// notification := "You are near " + dest.Name + ". Highlights: " + highlights
+		// notifications = append(notifications, notification)
 		if err := conn.WriteJSON(notifications); err != nil {
 			log.Println("WebSocket write error:", err)
 			break

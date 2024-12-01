@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Global Travel Destinations</h1>
-    <!-- Continent Selector -->
+
     <div class="continent-selector">
       <button 
         v-for="continent in continents" 
@@ -12,8 +12,7 @@
         {{ continent }}
       </button>
     </div>
-    
-    <!-- Destinations Display -->
+
     <div v-if="loading" class="loading">
       Loading destinations...
     </div>
@@ -62,11 +61,20 @@
     <div v-else class="no-destinations">
       No destinations found for this continent.
     </div>
+
+    <div class="notifications">
+      <h2>Real-Time Notifications</h2>
+      <ul>
+        <li v-for="(notification, index) in notifications" :key="index">
+          {{ notification }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 
 export default {
   data() {
@@ -74,36 +82,78 @@ export default {
       continents: [],
       destinations: [],
       selectedContinent: null,
-      loading: false
-    }
+      loading: false,
+      notifications: [],
+      socket: null,
+    };
   },
   methods: {
     async fetchContinents() {
       try {
-        const response = await axios.get('http://localhost:8090/continents')
-        this.continents = response.data
+        const response = await axios.get("http://localhost:8090/continents");
+        this.continents = response.data;
       } catch (error) {
-        console.error('Error fetching continents:', error)
+        console.error("Error fetching continents:", error);
       }
     },
     async selectContinent(continent) {
-      this.selectedContinent = continent
-      this.loading = true
+      this.selectedContinent = continent;
+      this.loading = true;
       try {
-        const response = await axios.get(`http://localhost:8090/destinations/${continent}`)
-        this.destinations = response.data
+        const response = await axios.get(
+          `http://localhost:8090/destinations/${continent}`
+        );
+        this.destinations = response.data;
       } catch (error) {
-        console.error('Error fetching destinations:', error)
-        this.destinations = []
+        console.error("Error fetching destinations:", error);
+        this.destinations = [];
       } finally {
-        this.loading = false
+        this.loading = false;
       }
-    }
+    },
+    setupWebSocket() {
+      this.socket = new WebSocket("ws://localhost:8090/ws/geo-tracking");
+
+      this.socket.onopen = () => {
+        console.log("WebSocket connected!");
+        this.sendLocation(40.748817, -73.985428, 5);
+      };
+
+      this.socket.onmessage = (event) => {
+        console.log("Message from server:", event.data);
+        this.notifications.push(event.data); 
+      };
+
+      this.socket.onerror = (error) => {
+        console.error("WebSocket error:", error);
+      };
+
+      this.socket.onclose = () => {
+        console.log("WebSocket closed!");
+      };
+    },
+    sendLocation(latitude, longitude, radius) {
+      const locationRequest = {
+        latitude,
+        longitude,
+        radius,
+      };
+      if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+        this.socket.send(JSON.stringify(locationRequest));
+        console.log("Location sent:", locationRequest);
+      }
+    },
   },
   created() {
-    this.fetchContinents()
-  }
-}
+    this.fetchContinents();
+    this.setupWebSocket();
+  },
+  beforeDestroy() {
+    if (this.socket) {
+      this.socket.close();
+    }
+  },
+};
 </script>
 
 <style scoped>
