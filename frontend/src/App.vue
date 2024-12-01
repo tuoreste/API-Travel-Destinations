@@ -129,8 +129,10 @@ export default {
 
 .destinations-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .destination-card {
