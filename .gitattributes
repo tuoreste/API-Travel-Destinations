@@ -1,6 +1,6 @@
 *.go linguist-language=Go
 *.vue linguist-language=Vue
-*.js linguist-language=JavaScript
+# *.js linguist-language=JavaScript
 
 frontend/node_modules/* linguist-vendored
 frontend/public/* linguist-vendored
