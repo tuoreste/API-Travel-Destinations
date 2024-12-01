@@ -23,6 +23,10 @@ func	main() {
 	r.HandleFunc("/destinations/{continent}", handlers.GetDestinationsByContinent).Methods("GET")
 	r.HandleFunc("/destinations/{id}", handlers.GetDestinationByID).Methods("GET")
 	r.HandleFunc("/continents", handlers.GetAllContinents).Methods("GET")
+	r.HandleFunc("/nearby", handlers.GetNearbyDestinations).Methods("GET")
+	r.HandleFunc("/ws/geo-tracking", handlers.GeoTrackingWebSocket)
+
+	http.Handle("/", r)
 
 	handler := c.Handler(r)
 
