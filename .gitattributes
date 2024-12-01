@@ -1,3 +1,10 @@
 *.go linguist-language=Go
 *.vue linguist-language=Vue
 *.js linguist-language=JavaScript
+
+frontend/src/assets/* linguist-vendored
+frontend/src/components/* linguist-vendored
+frontend/.json linguist-vendored
+frontend/assets/.js linguist-vendored
+frontend/assets/* linguist-vendored
+frontend/assets/* linguist-vendored
