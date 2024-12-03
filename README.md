@@ -59,16 +59,19 @@ The **Travel Destinations API** is a Go-based RESTful API designed to provide in
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/your-username/travel-destinations-api.git
+   ```
+   Move into project directory:
+   ```bash
    cd travel-destinations-api
    ```
-2. Install Dependencies:
+2. **Install Dependencies**:
    ```bash
    go mod tidy
    ```
-3. Run the API:
+3. **Run the API**:
    ```bash
    go run main.go
    ```
-4. Access the API: The API will be running on http://localhost:8080.
+4. **Access the API**: The API will be running on http://localhost:8080.
 
    
