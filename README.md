@@ -80,7 +80,7 @@ The frontend provides a user interface for interacting with the API, such as sea
    - Real-time alerts for improved engagement.
 
 ---
-### Clone repository
+## Clone repository
 
 1. Clone
 ```bash
