@@ -93,29 +93,23 @@ cd API-Travel-Destinations
 
 ### How to Run
 
-#### Backend:
-1. Navigate to the backend directory.
-2. Run:
-   ```bash
-   go run main.go
-   ```
-3. Backend will be available at ```http://localhost:8080.```
+#### Using Docker (Recommended):
+1. From the root of the project, run: `docker-compose up --build`
+2. Access the application:
+   - **Backend**: `http://localhost:8080`
+   - **Frontend**: `http://localhost:8090`
 
-#### Frontend:
+#### Without Docker (Alternative):
+##### Backend:
+1. Navigate to the backend directory: `cd backend`
+2. Run: `go run main.go`
+3. Backend will be available at `http://localhost:8080`.
 
-1. Navigate to the frontend directory.
-```bash
-cd ../frontend
-```
-2. Install dependencies:
-```bash
-npm install
-```
-3. Run:
-```bash
-npm run dev
-```
-4. Frontend will be available at ```http://localhost:8090```
+##### Frontend:
+1. Navigate to the frontend directory: `cd frontend`
+2. Install dependencies: `npm install`
+3. Run: `npm run dev`
+4. Frontend will be available at `http://localhost:8090`.
 
 ## Next Updates
 
