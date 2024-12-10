@@ -138,35 +138,44 @@ func	GeoTrackingWebSocket(w http.ResponseWriter, r *http.Request) {
 		err := conn.ReadJSON(&locationReq)
 		if err != nil {
 			log.Println("WebSocket read error:", err)
-			break
-		}
-
-		//call nearby locations
-		var closestDest	*models.Destination
-		var minDistance float64 = -1
-
-		// var notifications []string
-		for _, dest := range models.Destinations {
-			distance := CalculateDistance(locationReq.Latitude, locationReq.Longitude, dest.Location.Latitude, dest.Location.Longitude)
-			if distance <= locationReq.Radius && (minDistance == -1 || distance < minDistance) {
-				minDistance = distance
-				closestDest = &dest
+			if websocket.IsCloseError(err, websocket.CloseNormalClosure, websocket.CloseGoingAway) {
+				log.Println("WebSocket connection closed gracefully.")
+				break
+			} else {
+				log.Println("Error reading message, continuing...")
+				continue
 			}
 		}
 
-
-
-		// notification := "You are near " + dest.Name + ". Highlights: " + highlights
-		// notifications = append(notifications, notification)
+		closestDest, notification := findClosestDestination(locationReq)
 		if closestDest != nil {
-			highlights := strings.Join(closestDest.Highlights, "")
-			notification := map[string]string {
-				"message": "You are near " + closestDest.Name + ". Highlights: " + highlights, 
-			}
 			if err := conn.WriteJSON(notification); err != nil {
 				log.Println("WebSocket write error:", err)
 				break
 			}
 		}
 	}
+}
+
+func findClosestDestination(locationReq GeoLocationRequest) (*models.Destination, map[string]string) {
+	var closestDest *models.Destination
+	var minDistance float64 = -1
+
+	for _, dest := range models.Destinations {
+		distance := CalculateDistance(locationReq.Latitude, locationReq.Longitude, dest.Location.Latitude, dest.Location.Longitude)
+		if distance <= locationReq.Radius && (minDistance == -1 || distance < minDistance) {
+			minDistance = distance
+			closestDest = &dest
+		}
+	}
+
+	if closestDest != nil {
+		highlights := strings.Join(closestDest.Highlights, ", ")
+		notification := map[string]string{
+			"message": "You are near " + closestDest.Name + ". Highlights: " + highlights,
+		}
+		return closestDest, notification
+	}
+
+	return nil, nil
 }

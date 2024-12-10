@@ -13,18 +13,18 @@ func	main() {
 	r := mux.NewRouter()
 
 	c := cors.New(cors.Options{
-		AllowedOrigins: []string{"http://localhost:8080"},
+		AllowedOrigins: []string{"http://localhost:8090"},
 		AllowedMethods: []string{"GET", "OPTIONS"},
 		AllowedHeaders: []string{"Content-Type"},
 		AllowCredentials: true,
 	})
 
 	// the routes
-	r.HandleFunc("/destinations/{continent}", handlers.GetDestinationsByContinent).Methods("GET")
-	r.HandleFunc("/destinations/{id}", handlers.GetDestinationByID).Methods("GET")
-	r.HandleFunc("/continents", handlers.GetAllContinents).Methods("GET")
-	r.HandleFunc("/nearby", handlers.GetNearbyDestinations).Methods("GET")
-	r.HandleFunc("/ws/geo-tracking", handlers.GeoTrackingWebSocket)
+	r.HandleFunc("/api/destinations/{continent}", handlers.GetDestinationsByContinent).Methods("GET")
+	r.HandleFunc("/api/destinations/{id}", handlers.GetDestinationByID).Methods("GET")
+	r.HandleFunc("/api/continents", handlers.GetAllContinents).Methods("GET")
+	r.HandleFunc("/api/nearby", handlers.GetNearbyDestinations).Methods("GET")
+	r.HandleFunc("/api/ws/geo-tracking", handlers.GeoTrackingWebSocket)
 
 	http.Handle("/", r)
 

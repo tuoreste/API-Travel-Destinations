@@ -72,7 +72,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import axios from "axios";
 
@@ -90,7 +89,123 @@ export default {
   methods: {
     async fetchContinents() {
       try {
-        const response = await axios.get("http://localhost:8090/continents");
+        const response = await axios.get("/api/continents");
+        this.continents = response.data;
+      } catch (error) {
+        console.error("Error fetching continents:", error);
+      }
+    },
+    async selectContinent(continent) {
+      this.selectedContinent = continent;
+      this.loading = true;
+      try {
+        const response = await axios.get(
+          `http://localhost:8090/api/destinations/${continent}`
+        );
+        this.destinations = response.data;
+      } catch (error) {
+        console.error("Error fetching destinations:", error);
+        this.destinations = [];
+      } finally {
+        this.loading = false;
+      }
+    },
+    setupWebSocket() {
+      this.socket = new WebSocket("ws://localhost:8090/api/ws/geo-tracking");
+
+      this.socket.onopen = () => {
+        console.log("WebSocket connection established.");
+        this.getUserLocation(); // Fetch location after WebSocket is open
+      };
+
+      this.socket.onmessage = (event) => {
+        try {
+          const notification = JSON.parse(event.data);
+          console.log("Received WebSocket message:", notification); // Log the message
+          if (notification && notification.message) {
+            this.displayNotification(notification.message);
+          }
+        } catch (error) {
+          console.error("Error processing WebSocket message:", error);
+        }
+      };
+
+      this.socket.onerror = (error) => {
+        console.error("WebSocket error:", error);
+      };
+
+      this.socket.onclose = () => {
+        console.log("WebSocket connection closed!");
+      };
+    },
+
+    getUserLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            const radius = 1000;
+            this.sendLocationData(latitude, longitude, radius);
+          },
+          (error) => {
+            console.error("Error fetching location:", error);
+          }
+        );
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+      }
+    },
+
+    sendLocationData(latitude, longitude, radius) {
+      if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+        const locationRequest = {
+          latitude,
+          longitude,
+          radius,
+        };
+        console.log("Sending location data:", locationRequest); // Log location data
+        this.socket.send(JSON.stringify(locationRequest));
+      } else {
+        console.error("WebSocket is not open.");
+      }
+    },
+
+    displayNotification(message) {
+      alert(message); // Display notification message
+    },
+  },
+  created() {
+    this.fetchContinents();
+    this.setupWebSocket();
+  },
+  beforeDestroy() {
+    if (this.socket) {
+      this.socket.close();
+    }
+  },
+};
+</script>
+
+<!-- <script>
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      continents: [],
+      destinations: [],
+      selectedContinent: null,
+      loading: false,
+      notifications: [],
+      socket: null,
+    };
+  },
+  methods: {
+    async fetchContinents() {
+      try {
+        // const response = await axios.get("http://localhost:8090/continents");
+        const response = await axios.get("/api/continents");
         this.continents = response.data;
       } catch (error) {
         console.error("Error fetching continents:", error);
@@ -182,7 +297,7 @@ export default {
     }
   },
 };
-</script>
+</script> -->
 
 <style scoped>
 .continent-selector {

@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: api-travel-destinations-backend
+    ports:
+      - "8080:8090"
+    networks:
+      - api_travel_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: api-travel-destinations-frontend
+    ports:
+      - "8090:80"
+    networks:
+      - api_travel_network
+    depends_on:
+      - backend
+
+networks:
+  api_travel_network:
+    driver: bridge
