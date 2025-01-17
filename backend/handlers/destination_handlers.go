@@ -1,9 +1,7 @@
 package handlers
 
 import (
-	// "crypto/des"
 	"encoding/json"
-	// "go/constant"
 	"log"
 	"math"
 	"net/http"
@@ -12,9 +10,7 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
-	// "golang.org/x/net/websocket"
 
-	// "github.com/pelletier/go-toml/query"
 	"github.com/tuoreste/API-Travel-Destinations.git/models"
 )
 
@@ -24,8 +20,6 @@ type	GeoLocationRequest struct {
 	Radius	 float64 `json:"radius"`
 }
 
-
-//handling requests to fetch destinations by continent
 func	GetDestinationsByContinent(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	continent := vars["continent"]
@@ -37,7 +31,6 @@ func	GetDestinationsByContinent(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(destinations)
 }
 
-//get all continents
 func	GetAllContinents(w http.ResponseWriter, r *http.Request) {
 	continents := []string{
 		"North America",
@@ -54,7 +47,6 @@ func	GetAllContinents(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(continents)
 }
 
-//handling requests to fetch destinations by id
 func	GetDestinationByID(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id := vars["id"]
@@ -153,8 +145,6 @@ func	GeoTrackingWebSocket(w http.ResponseWriter, r *http.Request) {
 				closestDest = &dest
 			}
 		}
-
-
 
 		// notification := "You are near " + dest.Name + ". Highlights: " + highlights
 		// notifications = append(notifications, notification)
